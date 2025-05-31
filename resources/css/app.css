@@ -1,0 +1,79 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+
+@source "../../node_modules/flowbite";
+@source "../node_modules/flowbite-datepicker";
+
+@source "../views";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-clash: "Clash Display", sans-serif;
+    --font-sf-pro: "SF Pro Display", sans-serif;
+    --font-stix: "STIX Two Text", serif;
+    --font-poppins: "Poppins", sans-serif;
+
+    --color-dark-orange: #b33a03;
+    --color-light-orange: #fd8d03;
+    --color-main-orange: #ec5d01;
+    --color-bg-white: #f6f6f6;
+}
+
+/* Swal */
+.swal-popup {
+    @apply max-w-72 px-0 text-orange-900 rounded-lg;
+}
+
+.swal-icon {
+    @apply text-[12px];
+}
+
+.swal-timer-bar {
+    @apply text-orange-700 bg-orange-700;
+}
+
+/* Swiper */
+/* Product Display */
+.product-display-swiper {
+    @apply rounded-lg py-2 overflow-x-hidden;
+}
+
+.product-display-swiper .swiper-slide {
+    @apply bg-white rounded-lg overflow-x-hidden shadow-md hover:shadow-xl hover:-translate-y-2 transition-all cursor-pointer;
+}
+
+.product-display-swiper .product-content {
+    @apply px-3 pt-4 pb-3;
+}
+
+.product-display-swiper .product-title {
+    @apply font-sf-pro font-normal text-base;
+}
+
+.product-display-swiper .product-price {
+    @apply font-sf-pro font-bold text-lg;
+}
+
+.display-button-next {
+    @apply hidden lg:block absolute right-[10px] top-[45%] z-20 hover:scale-[105%] transition-all;
+}
+
+.display-button-prev {
+    @apply hidden lg:block absolute left-[10px] top-[45%] z-20 hover:scale-[105%] transition-all;
+}
+
+/* product detail */
+/* Product Images Swiper */
+.product-images .product-detail .swiper-slide-thumb-active {
+    opacity: 1;
+}
