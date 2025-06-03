@@ -40,7 +40,7 @@ class CarController extends Controller
             'year' => 'required|digits:4|integer|min:1980|max:' . date('Y'),
             'license_plate_area' => 'required|string|max:10',
             'mileage_km' => 'required|integer|min:0',
-            'tax_valid_until' => 'nullable',
+            'tax_valid_until' => 'required',
             'type' => 'required|in:gasoline,ev',
             'spec_image_path' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'price_type' => 'required|in:dp,otr_cash,otr_credit,contact',
@@ -48,13 +48,6 @@ class CarController extends Controller
             'price_notes' => 'nullable|string',
             'images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
-
-        // Konversi 'YYYY-MM' ke 'YYYY-MM-01' jika ada isinya
-        if ($request->filled('tax_valid_until')) {
-            $validated['tax_valid_until'] = $request->tax_valid_until . '-01';
-        } else {
-            $validated['tax_valid_until'] = null;
-        }
 
         // Simpan gambar spesifikasi jika ada
         if ($request->hasFile('spec_image_path')) {
@@ -105,7 +98,7 @@ class CarController extends Controller
             'year' => 'required|digits:4|integer|min:1980|max:' . date('Y'),
             'license_plate_area' => 'required|string|max:10',
             'mileage_km' => 'required|integer|min:0',
-            'tax_valid_until' => 'nullable',
+            'tax_valid_until' => 'required',
             'type' => 'required|in:gasoline,ev',
             'spec_image_path' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'price_type' => 'required|in:dp,otr_cash,otr_credit,contact',
@@ -115,13 +108,6 @@ class CarController extends Controller
             'delete_images' => 'nullable|array',
             'delete_images.*' => 'exists:car_images,id',
         ]);
-
-        // Konversi 'YYYY-MM' ke 'YYYY-MM-01' jika ada isinya
-        if ($request->filled('tax_valid_until')) {
-            $validated['tax_valid_until'] = $request->tax_valid_until . '-01';
-        } else {
-            $validated['tax_valid_until'] = null;
-        }
 
         // Hapus 'delete_images' dan 'images' dari array yang akan digunakan untuk update
         $updateData = collect($validated)

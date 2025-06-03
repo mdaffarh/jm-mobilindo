@@ -69,7 +69,7 @@
                     <div class="mb-5">
                         <label for="tax_valid_until" class="block mb-2 text-sm font-medium text-gray-900">Pajak Aktif
                             Sampai</label>
-                        <input type="month" id="tax_valid_until" name="tax_valid_until"
+                        <input type="date" id="tax_valid_until" name="tax_valid_until"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
                             value="{{ old('tax_valid_until', $car->tax_valid_until ? \Carbon\Carbon::parse($car->tax_valid_until)->format('Y-m') : '') }}" />
                     </div>
